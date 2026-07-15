@@ -1,8 +1,10 @@
 module com.ejcrud.proyectfinalpoo {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
+    opens controller to javafx.fxml;
+    opens app to javafx.fxml;
 
-    opens com.ejcrud.proyectfinalpoo to javafx.fxml;
-    exports com.ejcrud.proyectfinalpoo;
+    exports app;
 }

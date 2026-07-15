@@ -26,7 +26,7 @@ CREATE TABLE entregas (
                           CONSTRAINT fk_tarea FOREIGN KEY (id_tarea) REFERENCES tareas(id_tarea),
                           CONSTRAINT fk_estudiante FOREIGN KEY (id_estudiante) REFERENCES usuarios(id)
 );
-
+--Insertar Datos--
 INSERT INTO usuarios (nombre, correo, password, rol) VALUES
                                                          ('Admin', 'admin@centro.edu.ec', '123456', 'ADMIN'),
                                                          ('Estudiante1', 'estudiante@centro.edu.ec', '123456', 'ESTUDIANTE');
