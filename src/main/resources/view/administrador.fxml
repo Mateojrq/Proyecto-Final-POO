@@ -1,14 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.AdministradorController">
 
-</AnchorPane>
+    <Label styleClass="titulo-seccion" text="Administracion"/>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <!-- ===================== TAB USUARIOS ===================== -->
+        <Tab text="Gestion de usuarios">
+            <VBox spacing="10">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10"/>
+                </padding>
+
+                <TitledPane collapsible="false" text="Formulario">
+                    <VBox spacing="8">
+                        <padding>
+                            <Insets bottom="10" left="10" right="10" top="10"/>
+                        </padding>
+                        <HBox spacing="10">
+                            <VBox spacing="4">
+                                <Label text="Tipo de usuario"/>
+                                <ComboBox fx:id="cbTipoUsuario" prefWidth="160"/>
+                            </VBox>
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label text="Nombres"/>
+                                <TextField fx:id="txtNombres"/>
+                            </VBox>
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label text="Apellidos"/>
+                                <TextField fx:id="txtApellidos"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="10">
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label text="Correo"/>
+                                <TextField fx:id="txtCorreo"/>
+                            </VBox>
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label text="Contrasena (solo para crear)"/>
+                                <PasswordField fx:id="txtContrasena"/>
+                            </VBox>
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label fx:id="lblDatoExtra" text="Especialidad:"/>
+                                <TextField fx:id="txtDatoExtra"/>
+                            </VBox>
+                        </HBox>
+                        <HBox spacing="10">
+                            <Button onAction="#guardarUsuario" styleClass="boton-primario" text="Guardar"/>
+                            <Button onAction="#actualizarUsuario" text="Actualizar"/>
+                            <Button onAction="#eliminarUsuario" styleClass="boton-peligro" text="Eliminar"/>
+                            <Button onAction="#limpiarFormularioUsuario" text="Limpiar"/>
+                        </HBox>
+                    </VBox>
+                </TitledPane>
+
+                <TableView fx:id="tablaUsuarios" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colNombre" prefWidth="220" text="Nombre"/>
+                        <TableColumn fx:id="colCorreo" prefWidth="220" text="Correo"/>
+                        <TableColumn fx:id="colDato" prefWidth="160" text="Especialidad / Curso"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- ===================== TAB REPORTES ===================== -->
+        <Tab text="Reportes">
+            <VBox spacing="14">
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20"/>
+                </padding>
+                <GridPane hgap="16" vgap="14">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="200"/>
+                        <ColumnConstraints minWidth="120"/>
+                    </columnConstraints>
+                    <Label text="Total de profesores:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Label fx:id="lblTotalProfesores" styleClass="dato-reporte" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Total de estudiantes:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="lblTotalEstudiantes" styleClass="dato-reporte" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Total de tareas publicadas:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Label fx:id="lblTotalTareas" styleClass="dato-reporte" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label text="Total de entregas:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Label fx:id="lblTotalEntregas" styleClass="dato-reporte" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <Label text="Entregas calificadas:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <Label fx:id="lblEntregasCalificadas" styleClass="dato-reporte" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                    <Label text="Promedio de calificaciones:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <Label fx:id="lblPromedio" styleClass="dato-reporte" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                </GridPane>
+                <Button onAction="#descargarReporte" styleClass="boton-primario" text="Descargar reporte (.txt)"/>
+            </VBox>
+        </Tab>
+
+        <!---->
+        <Tab text="Configuracion">
+            <VBox spacing="10">
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20"/>
+                </padding>
+                <VBox spacing="4">
+                    <Label text="Nombre del centro"/>
+                    <TextField fx:id="txtNombreCentro"/>
+                </VBox>
+                <VBox spacing="4">
+                    <Label text="Direccion"/>
+                    <TextField fx:id="txtDireccion"/>
+                </VBox>
+                <VBox spacing="4">
+                    <Label text="Telefono"/>
+                    <TextField fx:id="txtTelefono"/>
+                </VBox>
+                <Button onAction="#guardarConfiguracion" styleClass="boton-primario" text="Guardar configuracion"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controller.LoginController" styleClass="fondo-login">
+    <VBox alignment="CENTER" maxWidth="380" spacing="14" styleClass="tarjeta-login">
+        <padding>
+            <Insets bottom="36" left="36" right="36" top="36"/>
+        </padding>
 
-</AnchorPane>
+        <Label styleClass="titulo-app" text="CNM"/>
+        <Label styleClass="subtitulo-app" text="Centro de Nivelacion - Tareas dirigidas"/>
+
+        <VBox spacing="4">
+            <Label text="Correo"/>
+            <TextField fx:id="txtCorreo" promptText="tucorreo@cnm.edu.ec"/>
+        </VBox>
+
+        <VBox spacing="4">
+            <Label text="Contrasena"/>
+            <PasswordField fx:id="txtContrasena" promptText="Contrasena"/>
+        </VBox>
+
+        <Label fx:id="lblError" managed="false" styleClass="texto-error" visible="false" wrapText="true"/>
+
+        <Button defaultButton="true" maxWidth="Infinity" onAction="#iniciarSesion" styleClass="boton-primario" text="Ingresar"/>
+
+        <Hyperlink onAction="#irARegistro" text="¿No tienes cuenta? Registrate aqui"/>
+    </VBox>
+</StackPane>

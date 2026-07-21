@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.DashboardController">
 
-</AnchorPane>
+    <top>
+        <HBox fx:id="headerBox" alignment="CENTER_LEFT" spacing="16" styleClass="cabecera">
+            <padding>
+                <Insets bottom="14" left="24" right="24" top="14"/>
+            </padding>
+            <Label styleClass="titulo-cabecera" text="CNM - Centro de Nivelacion"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <VBox alignment="CENTER_RIGHT">
+                <Label fx:id="lblBienvenida" styleClass="texto-cabecera-fuerte"/>
+                <Label fx:id="lblRol" styleClass="texto-cabecera-suave"/>
+            </VBox>
+            <Button onAction="#cerrarSesion" styleClass="boton-cerrar-sesion" text="Cerrar sesion"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="8" styleClass="menu-lateral">
+            <padding>
+                <Insets bottom="20" left="14" right="14" top="20"/>
+            </padding>
+            <Button fx:id="btnTareas" maxWidth="Infinity" onAction="#mostrarTareas" styleClass="boton-menu" text="Tareas"/>
+            <Button fx:id="btnEntregas" maxWidth="Infinity" onAction="#mostrarEntregas" styleClass="boton-menu" text="Entregas"/>
+            <Button fx:id="btnAdministracion" maxWidth="Infinity" onAction="#mostrarAdministracion" styleClass="boton-menu" text="Administracion"/>
+            <Button fx:id="btnMiPerfil" maxWidth="Infinity" onAction="#mostrarMiPerfil" styleClass="boton-menu" text="Mi Perfil"/>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentPane">
+            <padding>
+                <Insets bottom="16" left="16" right="16" top="16"/>
+            </padding>
+        </StackPane>
+    </center>
+</BorderPane>

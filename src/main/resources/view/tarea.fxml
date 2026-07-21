@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox spacing="12" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.TareaController">
 
-</AnchorPane>
+    <Label styleClass="titulo-seccion" text="Tareas / Deberes"/>
+    <Label fx:id="lblModoSoloLectura" managed="false" styleClass="aviso-solo-lectura"
+           text="Modo de solo lectura: consulta y descarga de archivos." visible="false"/>
+
+    <TitledPane collapsible="false" text="Formulario">
+        <VBox spacing="8">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10"/>
+            </padding>
+            <HBox spacing="10">
+                <VBox spacing="4" HBox.hgrow="ALWAYS">
+                    <Label text="Titulo"/>
+                    <TextField fx:id="txtTitulo"/>
+                </VBox>
+                <VBox spacing="4">
+                    <Label text="Fecha de entrega"/>
+                    <DatePicker fx:id="dpFechaEntrega"/>
+                </VBox>
+            </HBox>
+            <VBox spacing="4">
+                <Label text="Descripcion"/>
+                <TextArea fx:id="txtDescripcion" prefRowCount="3" wrapText="true"/>
+            </VBox>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Button fx:id="btnSeleccionarArchivo" onAction="#seleccionarArchivo" text="Seleccionar archivo"/>
+                <Label fx:id="lblArchivo" text="(sin archivo)"/>
+            </HBox>
+            <HBox spacing="10">
+                <Button fx:id="btnGuardar" onAction="#guardar" styleClass="boton-primario" text="Guardar"/>
+                <Button fx:id="btnActualizar" onAction="#actualizar" text="Actualizar"/>
+                <Button fx:id="btnEliminar" onAction="#eliminar" styleClass="boton-peligro" text="Eliminar"/>
+                <Button fx:id="btnLimpiar" onAction="#limpiar" text="Limpiar"/>
+                <Button fx:id="btnDescargar" onAction="#descargarArchivo" text="Descargar archivo"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <TableView fx:id="tabla" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colTitulo" prefWidth="220" text="Titulo"/>
+            <TableColumn fx:id="colProfesor" prefWidth="160" text="Profesor"/>
+            <TableColumn fx:id="colFecha" prefWidth="120" text="Fecha entrega"/>
+            <TableColumn fx:id="colArchivo" prefWidth="160" text="Archivo"/>
+        </columns>
+    </TableView>
+</VBox>

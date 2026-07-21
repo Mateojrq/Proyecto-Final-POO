@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controller.RegistroController" styleClass="fondo-login">
+    <VBox alignment="CENTER" maxWidth="420" spacing="10" styleClass="tarjeta-login">
+        <padding>
+            <Insets bottom="30" left="36" right="36" top="30"/>
+        </padding>
+
+        <Label styleClass="titulo-app" text="Crear cuenta"/>
+        <Label styleClass="subtitulo-app" text="Registrate como Profesor o Estudiante"/>
+
+        <HBox spacing="10">
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Nombres"/>
+                <TextField fx:id="txtNombres"/>
+            </VBox>
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Apellidos"/>
+                <TextField fx:id="txtApellidos"/>
+            </VBox>
+        </HBox>
+
+        <VBox spacing="4">
+            <Label text="Correo"/>
+            <TextField fx:id="txtCorreo" promptText="tucorreo@cnm.edu.ec"/>
+        </VBox>
+
+        <HBox spacing="10">
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Contrasena (min. 6 caracteres)"/>
+                <PasswordField fx:id="txtContrasena"/>
+            </VBox>
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Confirmar contrasena"/>
+                <PasswordField fx:id="txtConfirmar"/>
+            </VBox>
+        </HBox>
+
+        <VBox spacing="4">
+            <Label text="Quiero registrarme como:"/>
+            <ComboBox fx:id="cbRol" maxWidth="Infinity"/>
+        </VBox>
+
+        <VBox spacing="4">
+            <Label fx:id="lblDatoExtra" text="Especialidad:"/>
+            <TextField fx:id="txtDatoExtra"/>
+        </VBox>
+
+        <Label fx:id="lblError" managed="false" styleClass="texto-error" visible="false" wrapText="true"/>
+
+        <Button defaultButton="true" maxWidth="Infinity" onAction="#registrar" styleClass="boton-primario" text="Crear cuenta"/>
+        <Hyperlink onAction="#irALogin" text="Ya tengo cuenta, iniciar sesion"/>
+    </VBox>
+</StackPane>
