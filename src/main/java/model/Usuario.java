@@ -1,32 +1,38 @@
 package model;
 
-public abstract class Usuario {
-    private int id;
-    private String nombre;
-    private String correo;
-    private String password;
+/**
+ * Usuario del sistema: hereda de Persona y agrega los datos necesarios
+ * para autenticacion (contrasena y rol). Es la clase padre directa de
+ * Administrador, Profesor y Estudiante.
+ */
+public class Usuario extends Persona {
+
+    public static final String ROL_ADMIN = "ADMIN";
+    public static final String ROL_PROFESOR = "PROFESOR";
+    public static final String ROL_ESTUDIANTE = "ESTUDIANTE";
+
+    private String contrasena;
     private String rol;
 
-    public Usuario() {}
+    public Usuario() {
+        super();
+    }
 
-    public Usuario(int id, String nombre, String correo, String password, String rol) {
-        this.id = id;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.password = password;
+    public Usuario(int id, String nombres, String apellidos, String correo,
+                   String contrasena, String rol) {
+        super(id, nombres, apellidos, correo);
+        this.contrasena = contrasena;
         this.rol = rol;
     }
 
-    public abstract String obtenerAccesos();
+    @Override
+    public String getDescripcionRol() {
+        return "Usuario del sistema CNM";
+    }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public String getContrasena() { return contrasena; }
+    public void setContrasena(String contrasena) { this.contrasena = contrasena; }
+
     public String getRol() { return rol; }
     public void setRol(String rol) { this.rol = rol; }
 }
