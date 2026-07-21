@@ -7,12 +7,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
-        primaryStage.setTitle("Centro de Nivelación - Login");
-        primaryStage.setScene(new Scene(root, 600, 400));
-        primaryStage.show();
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+        Parent raiz = loader.load();
+
+        Scene escena = new Scene(raiz);
+        escena.getStylesheets().add(getClass().getResource("/css/estilos.css").toExternalForm());
+
+        stage.setTitle("CNM - Iniciar sesion");
+        stage.setScene(escena);
+        stage.setMinWidth(950);
+        stage.setMinHeight(620);
+        stage.show();
     }
 
     public static void main(String[] args) {

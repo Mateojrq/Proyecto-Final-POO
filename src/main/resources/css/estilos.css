@@ -1,0 +1,153 @@
+
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -color-admin: #1B3A6B;
+    -color-profesor: #1E7A46;
+    -color-estudiante: #6A3D9A;
+    -color-peligro: #C0392B;
+    -color-fondo: #F3F5F8;
+}
+
+/* ---------------------- Login / Registro ---------------------- */
+.fondo-login {
+    -fx-background-color: linear-gradient(to bottom right, #1B3A6B, #3D6FB4);
+}
+
+.tarjeta-login {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 24, 0.2, 0, 6);
+}
+
+.titulo-app {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1B3A6B;
+}
+
+.subtitulo-app {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6B7280;
+}
+
+.texto-error {
+    -fx-text-fill: -color-peligro;
+    -fx-font-weight: bold;
+}
+
+.aviso-solo-lectura {
+    -fx-text-fill: #6B7280;
+    -fx-font-style: italic;
+}
+
+/* ---------------------- Cabecera del dashboard ---------------------- */
+.cabecera {
+    -fx-background-color: -color-admin;
+}
+.cabecera.header-admin      { -fx-background-color: -color-admin; }
+.cabecera.header-profesor   { -fx-background-color: -color-profesor; }
+.cabecera.header-estudiante { -fx-background-color: -color-estudiante; }
+
+.titulo-cabecera {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.texto-cabecera-fuerte {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.texto-cabecera-suave {
+    -fx-text-fill: rgba(255,255,255,0.85);
+    -fx-font-size: 11px;
+}
+
+.boton-cerrar-sesion {
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+.boton-cerrar-sesion:hover {
+    -fx-background-color: rgba(255,255,255,0.3);
+}
+
+/* ---------------------- Menu lateral ---------------------- */
+.menu-lateral {
+    -fx-background-color: #E7EBF2;
+}
+
+.boton-menu {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1F2937;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 14 10 14;
+    -fx-background-radius: 6;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+.boton-menu:hover {
+    -fx-background-color: #C9D5E8;
+}
+
+/* ---------------------- Botones generales ---------------------- */
+.button {
+    -fx-cursor: hand;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16 8 16;
+}
+.boton-primario {
+    -fx-background-color: -color-profesor;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.boton-primario:hover {
+    -fx-background-color: derive(-color-profesor, -15%);
+}
+.boton-peligro {
+    -fx-background-color: -color-peligro;
+    -fx-text-fill: white;
+}
+.boton-peligro:hover {
+    -fx-background-color: derive(-color-peligro, -15%);
+}
+
+/* ---------------------- Secciones ---------------------- */
+.titulo-seccion {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F2937;
+}
+
+.dato-reporte {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-admin;
+}
+
+/* ---------------------- Tabla ---------------------- */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 6;
+}
+.table-view .column-header {
+    -fx-background-color: #E7EBF2;
+}
+.table-row-cell:selected {
+    -fx-background-color: #C9D5E8;
+}
+
+/* ---------------------- Campos de texto ---------------------- */
+.text-field:focused, .text-area:focused, .password-field:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: -color-profesor;
+    -fx-border-width: 1.5;
+}
+
+/* ---------------------- Fondo general de contenido ---------------------- */
+.stack-pane, .split-pane, .titled-pane {
+    -fx-background-color: transparent;
+}
+.root {
+    -fx-background-color: -color-fondo;
+}
