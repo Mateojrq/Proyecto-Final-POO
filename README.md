@@ -6,7 +6,7 @@ Escuela de Formacion de Tecnologos, EPN (2026-A).
 
 ## Integrantes
 - Mateo Josue Rodriguez Quevedo
-- (agregar el segundo integrante)
+
 
 ## 1. Que resuelve el sistema
 Centraliza la gestion de deberes ("tareas") entre profesores y estudiantes:
