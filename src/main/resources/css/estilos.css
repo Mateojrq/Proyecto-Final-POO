@@ -1,34 +1,36 @@
 
 .root {
-    -fx-font-family: "Segoe UI", Arial, sans-serif;
-    -fx-font-size: 13px;
-    -color-admin: #1B3A6B;
-    -color-profesor: #1E7A46;
-    -color-estudiante: #6A3D9A;
-    -color-peligro: #C0392B;
-    -color-fondo: #F3F5F8;
+    -fx-font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -color-admin: #3D5AFE;
+    -color-profesor: #00BFA6;
+    -color-estudiante: #AB47BC;
+    -color-primario: #FF6F3C;
+    -color-primario-oscuro: #E85A2A;
+    -color-peligro: #E63950;
+    -color-fondo: #FFF8F3;
 }
 
-/* ---------------------- Login / Registro ---------------------- */
+/* ---------------------- Login / Registro / Verificar ---------------------- */
 .fondo-login {
-    -fx-background-color: linear-gradient(to bottom right, #1B3A6B, #3D6FB4);
+    -fx-background-color: linear-gradient(to bottom right, #FF8A65, #7C4DFF);
 }
 
 .tarjeta-login {
     -fx-background-color: white;
-    -fx-background-radius: 14;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 24, 0.2, 0, 6);
+    -fx-background-radius: 24;
+    -fx-effect: dropshadow(gaussian, rgba(124,77,255,0.35), 30, 0.25, 0, 10);
 }
 
 .titulo-app {
-    -fx-font-size: 30px;
+    -fx-font-size: 32px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1B3A6B;
+    -fx-text-fill: #7C4DFF;
 }
 
 .subtitulo-app {
-    -fx-font-size: 12px;
-    -fx-text-fill: #6B7280;
+    -fx-font-size: 13px;
+    -fx-text-fill: #8B8FA3;
 }
 
 .texto-error {
@@ -37,7 +39,7 @@
 }
 
 .aviso-solo-lectura {
-    -fx-text-fill: #6B7280;
+    -fx-text-fill: #8B8FA3;
     -fx-font-style: italic;
 }
 
@@ -45,12 +47,12 @@
 .cabecera {
     -fx-background-color: -color-admin;
 }
-.cabecera.header-admin      { -fx-background-color: -color-admin; }
-.cabecera.header-profesor   { -fx-background-color: -color-profesor; }
-.cabecera.header-estudiante { -fx-background-color: -color-estudiante; }
+.cabecera.header-admin      { -fx-background-color: linear-gradient(to right, #3D5AFE, #5C7CFA); }
+.cabecera.header-profesor   { -fx-background-color: linear-gradient(to right, #00BFA6, #26D9BE); }
+.cabecera.header-estudiante { -fx-background-color: linear-gradient(to right, #AB47BC, #C86DD7); }
 
 .titulo-cabecera {
-    -fx-font-size: 18px;
+    -fx-font-size: 19px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
 }
@@ -64,46 +66,48 @@
 }
 
 .boton-cerrar-sesion {
-    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-background-color: rgba(255,255,255,0.2);
     -fx-text-fill: white;
-    -fx-background-radius: 6;
+    -fx-background-radius: 20;
     -fx-cursor: hand;
 }
 .boton-cerrar-sesion:hover {
-    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-color: rgba(255,255,255,0.35);
 }
 
 /* ---------------------- Menu lateral ---------------------- */
 .menu-lateral {
-    -fx-background-color: #E7EBF2;
+    -fx-background-color: #FFF1E8;
 }
 
 .boton-menu {
     -fx-background-color: transparent;
-    -fx-text-fill: #1F2937;
+    -fx-text-fill: #4A4463;
     -fx-alignment: CENTER_LEFT;
-    -fx-padding: 10 14 10 14;
-    -fx-background-radius: 6;
-    -fx-font-size: 13px;
+    -fx-padding: 12 16 12 16;
+    -fx-background-radius: 14;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
     -fx-cursor: hand;
 }
 .boton-menu:hover {
-    -fx-background-color: #C9D5E8;
+    -fx-background-color: derive(-color-primario, 80%);
+    -fx-text-fill: -color-primario-oscuro;
 }
 
 /* ---------------------- Botones generales ---------------------- */
 .button {
     -fx-cursor: hand;
-    -fx-background-radius: 6;
-    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 14;
+    -fx-padding: 9 18 9 18;
 }
 .boton-primario {
-    -fx-background-color: -color-profesor;
+    -fx-background-color: -color-primario;
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 .boton-primario:hover {
-    -fx-background-color: derive(-color-profesor, -15%);
+    -fx-background-color: -color-primario-oscuro;
 }
 .boton-peligro {
     -fx-background-color: -color-peligro;
@@ -112,36 +116,81 @@
 .boton-peligro:hover {
     -fx-background-color: derive(-color-peligro, -15%);
 }
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(124,77,255,0.25), 10, 0.2, 0, 3);
+}
 
 /* ---------------------- Secciones ---------------------- */
 .titulo-seccion {
-    -fx-font-size: 20px;
+    -fx-font-size: 23px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1F2937;
+    -fx-text-fill: #4A4463;
+    -fx-padding: 0 0 4 0;
 }
 
 .dato-reporte {
-    -fx-font-size: 15px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: -color-admin;
+}
+
+.texto-etiqueta {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8B8FA3;
+    -fx-font-weight: bold;
+}
+
+.panel-info {
+    -fx-background-color: #F3EEFF;
+    -fx-background-radius: 14;
+    -fx-padding: 14 18 14 18;
+    -fx-border-color: #E0D3FF;
+    -fx-border-radius: 14;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #FFE4D6;
+    -fx-background-radius: 14 14 0 0;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-primario-oscuro;
+    -fx-padding: 11 16 11 16;
+}
+.titled-pane > .content {
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 14 14;
+    -fx-border-color: #F0E3DA;
+    -fx-border-radius: 0 0 14 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0.1, 0, 3);
 }
 
 /* ---------------------- Tabla ---------------------- */
 .table-view {
     -fx-background-color: white;
-    -fx-background-radius: 6;
+    -fx-background-radius: 14;
 }
-.table-view .column-header {
-    -fx-background-color: #E7EBF2;
+.table-view .column-header-background {
+    -fx-background-color: #FFE4D6;
+    -fx-background-radius: 14 14 0 0;
+}
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-primario-oscuro;
 }
 .table-row-cell:selected {
-    -fx-background-color: #C9D5E8;
+    -fx-background-color: #F3EEFF;
+}
+.table-row-cell {
+    -fx-cell-size: 36px;
 }
 
 /* ---------------------- Campos de texto ---------------------- */
+.text-field, .text-area, .password-field, .combo-box, .date-picker {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
 .text-field:focused, .text-area:focused, .password-field:focused, .combo-box:focused, .date-picker:focused {
-    -fx-border-color: -color-profesor;
-    -fx-border-width: 1.5;
+    -fx-border-color: -color-primario;
+    -fx-border-width: 1.6;
 }
 
 /* ---------------------- Fondo general de contenido ---------------------- */

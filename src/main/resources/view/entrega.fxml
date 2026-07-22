@@ -29,7 +29,7 @@
                     </HBox>
                 </VBox>
             </HBox>
-            <HBox spacing="10">
+            <HBox fx:id="filaCalificacionEditable" spacing="10">
                 <VBox spacing="4">
                     <Label text="Calificacion (0-20)"/>
                     <TextField fx:id="txtCalificacion" prefWidth="120"/>
@@ -39,6 +39,19 @@
                     <TextArea fx:id="txtComentario" prefRowCount="2" wrapText="true"/>
                 </VBox>
             </HBox>
+
+            <VBox fx:id="boxSoloLecturaCalificacion" spacing="4" styleClass="panel-info">
+                <HBox spacing="30">
+                    <VBox spacing="2">
+                        <Label styleClass="texto-etiqueta" text="Tu calificacion"/>
+                        <Label fx:id="lblCalificacionSoloLectura" styleClass="dato-reporte" text="Sin calificar todavia"/>
+                    </VBox>
+                    <VBox spacing="2" HBox.hgrow="ALWAYS">
+                        <Label styleClass="texto-etiqueta" text="Comentario del profesor"/>
+                        <Label fx:id="lblComentarioSoloLectura" text="(sin comentario del profesor)" wrapText="true"/>
+                    </VBox>
+                </HBox>
+            </VBox>
             <HBox spacing="10">
                 <Button fx:id="btnGuardar" onAction="#guardar" styleClass="boton-primario" text="Guardar"/>
                 <Button fx:id="btnActualizar" onAction="#actualizar" text="Actualizar"/>

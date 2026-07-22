@@ -2,14 +2,22 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
 <StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="controller.LoginController" styleClass="fondo-login">
-    <VBox alignment="CENTER" maxWidth="380" spacing="14" styleClass="tarjeta-login">
+    <VBox alignment="CENTER" maxWidth="440" spacing="14" styleClass="tarjeta-login">
         <padding>
-            <Insets bottom="36" left="36" right="36" top="36"/>
+            <Insets bottom="44" left="44" right="44" top="44"/>
         </padding>
+
+        <ImageView fitHeight="84" preserveRatio="true">
+            <image>
+                <Image url="@../img/logo.png"/>
+            </image>
+        </ImageView>
 
         <Label styleClass="titulo-app" text="CNM"/>
         <Label styleClass="subtitulo-app" text="Centro de Nivelacion - Tareas dirigidas"/>

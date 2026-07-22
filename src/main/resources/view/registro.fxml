@@ -2,14 +2,22 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
 <StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="controller.RegistroController" styleClass="fondo-login">
-    <VBox alignment="CENTER" maxWidth="420" spacing="10" styleClass="tarjeta-login">
+    <VBox alignment="CENTER" maxWidth="480" spacing="10" styleClass="tarjeta-login">
         <padding>
-            <Insets bottom="30" left="36" right="36" top="30"/>
+            <Insets bottom="34" left="44" right="44" top="30"/>
         </padding>
+
+        <ImageView fitHeight="64" preserveRatio="true">
+            <image>
+                <Image url="@../img/logo.png"/>
+            </image>
+        </ImageView>
 
         <Label styleClass="titulo-app" text="Crear cuenta"/>
         <Label styleClass="subtitulo-app" text="Registrate como Profesor o Estudiante"/>

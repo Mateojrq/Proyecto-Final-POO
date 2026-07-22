@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import model.Entrega;
 import model.Tarea;
@@ -28,8 +30,12 @@ public class EntregaController implements VistaConUsuario {
     @FXML private ComboBox<Tarea> cbTarea;
     @FXML private Label lblArchivo;
     @FXML private Button btnSeleccionarArchivo;
+    @FXML private HBox filaCalificacionEditable;
     @FXML private TextField txtCalificacion;
     @FXML private TextArea txtComentario;
+    @FXML private VBox boxSoloLecturaCalificacion;
+    @FXML private Label lblCalificacionSoloLectura;
+    @FXML private Label lblComentarioSoloLectura;
     @FXML private Button btnGuardar;
     @FXML private Button btnActualizar;
     @FXML private Button btnEliminar;
@@ -86,8 +92,14 @@ public class EntregaController implements VistaConUsuario {
         btnEliminar.setVisible(estudiante);
         btnEliminar.setManaged(estudiante);
 
-        txtCalificacion.setDisable(!profesor);
-        txtComentario.setDisable(!profesor);
+        // El Profesor ve los campos EDITABLES de calificacion; Estudiante y
+        // Administrador ven un texto de solo lectura (mas claro que un campo
+        // deshabilitado, que parece un formulario roto).
+        filaCalificacionEditable.setVisible(profesor);
+        filaCalificacionEditable.setManaged(profesor);
+        boxSoloLecturaCalificacion.setVisible(!profesor);
+        boxSoloLecturaCalificacion.setManaged(!profesor);
+
         btnActualizar.setVisible(estudiante || profesor);
         btnActualizar.setManaged(estudiante || profesor);
         btnActualizar.setText(profesor ? "Guardar calificacion" : "Actualizar entrega");
@@ -116,6 +128,10 @@ public class EntregaController implements VistaConUsuario {
         lblArchivo.setText(entrega.getNombreArchivo() != null ? entrega.getNombreArchivo() : "(sin archivo)");
         txtCalificacion.setText(entrega.getCalificacion() != null ? String.valueOf(entrega.getCalificacion()) : "");
         txtComentario.setText(entrega.getComentario() != null ? entrega.getComentario() : "");
+        lblCalificacionSoloLectura.setText(entrega.getCalificacion() != null
+                ? String.valueOf(entrega.getCalificacion()) : "Sin calificar todavia");
+        lblComentarioSoloLectura.setText(entrega.getComentario() != null && !entrega.getComentario().isBlank()
+                ? entrega.getComentario() : "(sin comentario del profesor)");
         archivoElegido = null;
         cbTarea.getItems().stream()
                 .filter(t -> t.getId() == entrega.getIdTarea())
@@ -269,6 +285,8 @@ public class EntregaController implements VistaConUsuario {
         lblArchivo.setText("(sin archivo)");
         txtCalificacion.clear();
         txtComentario.clear();
+        lblCalificacionSoloLectura.setText("Sin calificar todavia");
+        lblComentarioSoloLectura.setText("(sin comentario del profesor)");
         archivoElegido = null;
         entregaSeleccionada = null;
         tabla.getSelectionModel().clearSelection();

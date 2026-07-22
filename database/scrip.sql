@@ -1,46 +1,42 @@
-CREATE DATABASE db_centro_nivelacion;
 
+CREATE TABLE IF NOT EXISTS usuarios (
+                                        id              SERIAL PRIMARY KEY,
+                                        nombres         VARCHAR(100)  NOT NULL,
+    apellidos       VARCHAR(100)  NOT NULL,
+    correo          VARCHAR(150)  NOT NULL UNIQUE,
+    contrasena      VARCHAR(256)  NOT NULL,
+    rol             VARCHAR(20)   NOT NULL CHECK (rol IN ('ADMIN', 'PROFESOR', 'ESTUDIANTE')),
+    especialidad    VARCHAR(100),
+    curso           VARCHAR(50),
+    fecha_registro  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
 
-CREATE TABLE usuarios (
-                          id SERIAL PRIMARY KEY,
-                          nombre VARCHAR(100) NOT NULL,
-                          correo VARCHAR(100) UNIQUE NOT NULL,
-                          password VARCHAR(255) NOT NULL,
-                          rol VARCHAR(20) NOT NULL,
-                          especialidad VARCHAR(100)
-);
+-- ---------------------------------------------------------------------
+-- Tabla tareas: los deberes que sube un profesor (recurso principal)
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS tareas (
+                                      id               SERIAL PRIMARY KEY,
+                                      titulo           VARCHAR(150)  NOT NULL,
+    descripcion      TEXT          NOT NULL,
+    fecha_entrega    DATE          NOT NULL,
+    id_profesor      INTEGER       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    archivo          BYTEA,
+    nombre_archivo   VARCHAR(255),
+    fecha_creacion   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
 
-CREATE TABLE tareas (
-                        id_tarea SERIAL PRIMARY KEY,
-                        titulo VARCHAR(150) NOT NULL,
-                        descripcion TEXT,
-                        id_profesor INT NOT NULL,
-                        CONSTRAINT fk_profesor FOREIGN KEY (id_profesor) REFERENCES usuarios(id)
-);
-
-CREATE TABLE entregas (
-                          id_entrega SERIAL PRIMARY KEY,
-                          id_tarea INT NOT NULL,
-                          id_estudiante INT NOT NULL,
-                          calificacion DECIMAL(5,2),
-                          CONSTRAINT fk_tarea FOREIGN KEY (id_tarea) REFERENCES tareas(id_tarea),
-                          CONSTRAINT fk_estudiante FOREIGN KEY (id_estudiante) REFERENCES usuarios(id)
-);
---Insertar Datos--
-INSERT INTO usuarios (nombre, correo, password, rol) VALUES
-                                                         ('Admin', 'admin@centro.edu.ec', '123456', 'ADMIN'),
-                                                         ('Estudiante1', 'estudiante@centro.edu.ec', '123456', 'ESTUDIANTE');
-
-INSERT INTO usuarios (nombre, correo, password, rol, especialidad) VALUES
-    ('Profesor1', 'profe@centro.edu.ec', '123456', 'PROFESOR', 'Matemáticas');
-
-
-
-
-
-
-
-
-
-
-
+-- ---------------------------------------------------------------------
+-- Tabla entregas: relaciona un estudiante con una tarea (tabla de relacion)
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS entregas (
+                                        id               SERIAL PRIMARY KEY,
+                                        id_tarea         INTEGER       NOT NULL REFERENCES tareas(id) ON DELETE CASCADE,
+    id_estudiante    INTEGER       NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    archivo          BYTEA,
+    nombre_archivo   VARCHAR(255),
+    fecha_entrega    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    calificacion     NUMERIC(4,2),
+    comentario       TEXT,
+    estado           VARCHAR(20) DEFAULT 'PENDIENTE' CHECK (estado IN ('PENDIENTE', 'CALIFICADO')),
+    UNIQUE (id_tarea, id_estudiante)                 -- un estudiante no puede duplicar entrega
+    );

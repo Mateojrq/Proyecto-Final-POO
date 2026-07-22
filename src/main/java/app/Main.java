@@ -18,8 +18,11 @@ public class Main extends Application {
 
         stage.setTitle("CNM - Iniciar sesion");
         stage.setScene(escena);
-        stage.setMinWidth(950);
-        stage.setMinHeight(620);
+        stage.setMinWidth(1150);
+        stage.setMinHeight(750);
+        stage.setWidth(1280);
+        stage.setHeight(820);
+        stage.centerOnScreen();
         stage.show();
     }
 

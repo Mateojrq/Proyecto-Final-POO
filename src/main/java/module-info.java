@@ -3,6 +3,7 @@ module ProyectoFinalPOO.CNM {
     requires javafx.fxml;
     requires java.sql;
     requires org.postgresql.jdbc;
+    requires jakarta.mail;
 
     opens app to javafx.graphics;
     opens controller to javafx.fxml;

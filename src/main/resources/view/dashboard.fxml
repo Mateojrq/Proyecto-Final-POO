@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
@@ -12,6 +14,11 @@
             <padding>
                 <Insets bottom="14" left="24" right="24" top="14"/>
             </padding>
+            <ImageView fitHeight="42" preserveRatio="true">
+                <image>
+                    <Image url="@../img/logo.png"/>
+                </image>
+            </ImageView>
             <Label styleClass="titulo-cabecera" text="CNM - Centro de Nivelacion"/>
             <Region HBox.hgrow="ALWAYS"/>
             <VBox alignment="CENTER_RIGHT">
@@ -23,7 +30,7 @@
     </top>
 
     <left>
-        <VBox spacing="8" styleClass="menu-lateral">
+        <VBox prefWidth="210" spacing="10" styleClass="menu-lateral">
             <padding>
                 <Insets bottom="20" left="14" right="14" top="20"/>
             </padding>

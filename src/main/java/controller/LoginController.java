@@ -37,6 +37,20 @@ public class LoginController {
             return;
         }
 
+        if (!usuario.isVerificado()) {
+            usuarioDAO.generarYEnviarCodigo(usuario.getCorreo(), usuario.getNombres());
+            try {
+                Stage stage = (Stage) txtCorreo.getScene().getWindow();
+                var loader = Navegador.cambiarEscena(stage, "/view/verificar.fxml");
+                VerificarController verificarController = loader.getController();
+                verificarController.setCorreo(usuario.getCorreo());
+                stage.setTitle("CNM - Verificar correo");
+            } catch (IOException e) {
+                mostrarError("No se pudo abrir la verificacion: " + e.getMessage());
+            }
+            return;
+        }
+
         try {
             Stage stage = (Stage) txtCorreo.getScene().getWindow();
             var loader = Navegador.cambiarEscena(stage, "/view/dashboard.fxml");

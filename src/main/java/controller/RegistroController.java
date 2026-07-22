@@ -89,9 +89,17 @@ public class RegistroController {
             return;
         }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Cuenta creada correctamente. Ya puedes iniciar sesion.");
-        alert.showAndWait();
-        irALogin(event);
+        usuarioDAO.generarYEnviarCodigo(correo, nombres);
+
+        try {
+            Stage stage = (Stage) txtNombres.getScene().getWindow();
+            var loader = Navegador.cambiarEscena(stage, "/view/verificar.fxml");
+            VerificarController verificarController = loader.getController();
+            verificarController.setCorreo(correo);
+            stage.setTitle("CNM - Verificar correo");
+        } catch (IOException e) {
+            mostrarError("Cuenta creada, pero no se pudo abrir la verificacion: " + e.getMessage());
+        }
     }
 
     @FXML

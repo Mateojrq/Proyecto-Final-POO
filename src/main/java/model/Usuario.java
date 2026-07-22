@@ -13,6 +13,7 @@ public class Usuario extends Persona {
 
     private String contrasena;
     private String rol;
+    private boolean verificado;
 
     public Usuario() {
         super();
@@ -35,4 +36,7 @@ public class Usuario extends Persona {
 
     public String getRol() { return rol; }
     public void setRol(String rol) { this.rol = rol; }
+
+    public boolean isVerificado() { return verificado; }
+    public void setVerificado(boolean verificado) { this.verificado = verificado; }
 }

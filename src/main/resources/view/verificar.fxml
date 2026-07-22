@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controller.VerificarController" styleClass="fondo-login">
+    <VBox alignment="CENTER" maxWidth="420" spacing="14" styleClass="tarjeta-login">
+        <padding>
+            <Insets bottom="40" left="40" right="40" top="40"/>
+        </padding>
+
+        <ImageView fitHeight="72" preserveRatio="true">
+            <image>
+                <Image url="@../img/logo.png"/>
+            </image>
+        </ImageView>
+
+        <Label styleClass="titulo-app" text="Verifica tu correo"/>
+        <Label styleClass="subtitulo-app" text="Te enviamos un codigo de 6 digitos a:" wrapText="true"/>
+        <Label fx:id="lblCorreoDestino" styleClass="dato-reporte"/>
+
+        <VBox spacing="4">
+            <Label text="Codigo de verificacion"/>
+            <TextField fx:id="txtCodigo" alignment="CENTER" promptText="000000"/>
+        </VBox>
+
+        <Label fx:id="lblError" managed="false" styleClass="texto-error" visible="false" wrapText="true"/>
+
+        <Button defaultButton="true" maxWidth="Infinity" onAction="#verificar" styleClass="boton-primario" text="Verificar"/>
+        <Hyperlink onAction="#reenviarCodigo" text="Reenviar codigo"/>
+        <Hyperlink onAction="#irALogin" text="Volver al login"/>
+    </VBox>
+</StackPane>
